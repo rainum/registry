@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="./css/chosen.css">
+  <link rel="stylesheet" href="./css/clndr.css">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Регістратура 2.0</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container main-container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="step step-1">
+        <h2>Крок 1 з 3: Особисті дані</h2>
+        <form action="/" method="post" id="step-1-form">
+          <div class="form-group">
+            <label for="last-name">Прізвіще</label>
+            <input type="text" class="form-control" id="last-name" required>
+          </div>
+          <div class="form-group">
+            <label for="first-name">Им'я</label>
+            <input type="text" class="form-control" id="first-name" required>
+          </div>
+          <div class="form-group">
+            <label for="patronym">По-батькові</label>
+            <input type="text" class="form-control" id="patronym" required>
+          </div>
+          <div class="form-group">
+            <label>Вулиця</label>
+            <select class="form-control" name="street" id="street" required>
+              <option value=""></option>
+              <option value="8-го Березня пров.">8-го Березня пров.</option>
+              <option value="Автомобільна">Автомобільна</option>
+              <option value="Агафонова">Агафонова</option>
+              <option value="Айдарська">Айдарська</option>
+              <option value="Артема">Артема</option>
+              <option value="Борова">Борова</option>
+              <option value="Вілісова">Вілісова</option>
+              <option value="Гагаріна">Гагаріна</option>
+              <option value="Гвардійський проспект">Гвардійський проспект</option>
+              <option value="Гоголя">Гоголя</option>
+              <option value="Гоголя пров.">Гоголя пров.</option>
+              <option value="Горького">Горького</option>
+              <option value="Дачна">Дачна</option>
+              <option value="Донецька">Донецька</option>
+              <option value="Дружби Народів бульвар">Дружби Народів бульвар</option>
+              <option value="Енергетиків">Енергетиків</option>
+              <option value="Єгорова">Єгорова</option>
+              <option value="Зелена">Зелена</option>
+              <option value="Квіткова">Квіткова</option>
+              <option value="Київська">Київська</option>
+              <option value="Кірова">Кірова</option>
+              <option value="Космонавтів проспект">Космонавтів проспект</option>
+              <option value="Курчатова">Курчатова</option>
+              <option value="Лермонтова">Лермонтова</option>
+              <option value="Лисичанська">Лисичанська</option>
+              <option value="Лісна">Лісна</option>
+              <option value="Лісний пров.">Лісний пров.</option>
+              <option value="Ліщини Богдана">Ліщини Богдана</option>
+              <option value="Ломоносова">Ломоносова</option>
+              <option value="Ломоносова пров.">Ломоносова пров.</option>
+              <option value="Луначарського">Луначарського</option>
+              <option value="Маяковського">Маяковського</option>
+              <option value="Менделєєва">Менделєєва</option>
+              <option value="Механізаторів">Механізаторів</option>
+              <option value="Мирошниченка">Мирошниченка</option>
+              <option value="Молодіжна">Молодіжна</option>
+              <option value="Московська">Московська</option>
+              <option value="Науки">Науки</option>
+              <option value="Новікова">Новікова</option>
+              <option value="Партизанська">Партизанська</option>
+              <option value="Перемоги майдан">Перемоги майдан</option>
+              <option value="Першотравнева">Першотравнева</option>
+              <option value="Пивоварова">Пивоварова</option>
+              <option value="Північна">Північна</option>
+              <option value="Підлісна">Підлісна</option>
+              <option value="Підлісний пров.">Підлісний пров.</option>
+              <option value="Піонерська">Піонерська</option>
+              <option value="Площа миру">Площа миру</option>
+              <option value="Промислова">Промислова</option>
+              <option value="Річна">Річна</option>
+              <option value="Світлий пров.">Світлий пров.</option>
+              <option value="Силікатна">Силікатна</option>
+              <option value="Сметаніна">Сметаніна</option>
+              <option value="Соборний майдан">Соборний майдан</option>
+              <option value="Соснова">Соснова</option>
+              <option value="Сосюри">Сосюри</option>
+              <option value="Танкистів">Танкистів</option>
+              <option value="Тімірязєва">Тімірязєва</option>
+              <option value="Титова">Титова</option>
+              <option value="Фабричний пров.">Фабричний пров.</option>
+              <option value="Федоренка">Федоренка</option>
+              <option value="Хіміків проспект">Хіміків проспект</option>
+              <option value="Центральний проспект">Центральний проспект</option>
+              <option value="Чайковського">Чайковського</option>
+              <option value="Шевченка">Шевченка</option>
+              <option value="Шосе Будівельників">Шосе Будівельників</option>
+              <option value="Юності">Юності</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="building">Номер будинку</label>
+            <input type="text" class="form-control" id="building" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Телефон</label>
+            <input type="text" class="form-control" id="phone" name="phone">
+          </div>
+          <div class="form-group">
+            <label>Дата народження</label>
+            <div class="row">
+              <div class="col-xs-4">
+                <select class="form-control" name="dob-day" id="dob-day" required>
+                  <option value="">День</option>
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                </select>
+              </div>
+              <div class="col-xs-4">
+                <select class="form-control" name="dob-month" id="dob-month" required>
+                  <option value="">Місяць</option>
+                  <option value="01">Січень</option>
+                  <option value="02">Лютий</option>
+                  <option value="03">Березень</option>
+                  <option value="04">Квітень</option>
+                  <option value="05">Травень</option>
+                  <option value="06">Червень</option>
+                  <option value="07">Ліпень</option>
+                  <option value="08">Серпень</option>
+                  <option value="09">Вересень</option>
+                  <option value="10">Жовтень</option>
+                  <option value="11">Листопад</option>
+                  <option value="12">Грудень</option>
+                </select>
+              </div>
+              <div class="col-xs-4">
+                <select class="form-control" name="dob-year" id="dob-year" required>
+                  <option value="">Рік</option>
+                  <option value="2012">2012</option>
+                  <option value="2011">2011</option>
+                  <option value="2010">2010</option>
+                  <option value="2009">2009</option>
+                  <option value="2008">2008</option>
+                  <option value="2007">2007</option>
+                  <option value="2006">2006</option>
+                  <option value="2005">2005</option>
+                  <option value="2004">2004</option>
+                  <option value="2003">2003</option>
+                  <option value="2002">2002</option>
+                  <option value="2001">2001</option>
+                  <option value="2000">2000</option>
+                  <option value="1999">1999</option>
+                  <option value="1998">1998</option>
+                  <option value="1997">1997</option>
+                  <option value="1996">1996</option>
+                  <option value="1995">1995</option>
+                  <option value="1994">1994</option>
+                  <option value="1993">1993</option>
+                  <option value="1992">1992</option>
+                  <option value="1991">1991</option>
+                  <option value="1990">1990</option>
+                  <option value="1989">1989</option>
+                  <option value="1988">1988</option>
+                  <option value="1987">1987</option>
+                  <option value="1986">1986</option>
+                  <option value="1985">1985</option>
+                  <option value="1984">1984</option>
+                  <option value="1983">1983</option>
+                  <option value="1982">1982</option>
+                  <option value="1981">1981</option>
+                  <option value="1980">1980</option>
+                  <option value="1979">1979</option>
+                  <option value="1978">1978</option>
+                  <option value="1977">1977</option>
+                  <option value="1976">1976</option>
+                  <option value="1975">1975</option>
+                  <option value="1974">1974</option>
+                  <option value="1973">1973</option>
+                  <option value="1972">1972</option>
+                  <option value="1971">1971</option>
+                  <option value="1970">1970</option>
+                  <option value="1969">1969</option>
+                  <option value="1968">1968</option>
+                  <option value="1967">1967</option>
+                  <option value="1966">1966</option>
+                  <option value="1965">1965</option>
+                  <option value="1964">1964</option>
+                  <option value="1963">1963</option>
+                  <option value="1962">1962</option>
+                  <option value="1961">1961</option>
+                  <option value="1960">1960</option>
+                  <option value="1959">1959</option>
+                  <option value="1958">1958</option>
+                  <option value="1957">1957</option>
+                  <option value="1956">1956</option>
+                  <option value="1955">1955</option>
+                  <option value="1954">1954</option>
+                  <option value="1953">1953</option>
+                  <option value="1952">1952</option>
+                  <option value="1951">1951</option>
+                  <option value="1950">1950</option>
+                  <option value="1949">1949</option>
+                  <option value="1948">1948</option>
+                  <option value="1947">1947</option>
+                  <option value="1946">1946</option>
+                  <option value="1945">1945</option>
+                  <option value="1944">1944</option>
+                  <option value="1943">1943</option>
+                  <option value="1942">1942</option>
+                  <option value="1941">1941</option>
+                  <option value="1940">1940</option>
+                  <option value="1939">1939</option>
+                  <option value="1938">1938</option>
+                  <option value="1937">1937</option>
+                  <option value="1936">1936</option>
+                  <option value="1935">1935</option>
+                  <option value="1934">1934</option>
+                  <option value="1933">1933</option>
+                  <option value="1932">1932</option>
+                  <option value="1931">1931</option>
+                  <option value="1930">1930</option>
+                  <option value="1929">1929</option>
+                  <option value="1928">1928</option>
+                  <option value="1927">1927</option>
+                  <option value="1926">1926</option>
+                  <option value="1925">1925</option>
+                  <option value="1924">1924</option>
+                  <option value="1923">1923</option>
+                  <option value="1922">1922</option>
+                  <option value="1921">1921</option>
+                  <option value="1920">1920</option>
+                  <option value="1919">1919</option>
+                  <option value="1918">1918</option>
+                  <option value="1917">1917</option>
+                  <option value="1916">1916</option>
+                  <option value="1915">1915</option>
+                  <option value="1914">1914</option>
+                  <option value="1913">1913</option>
+                  <option value="1912">1912</option>
+                  <option value="1911">1911</option>
+                  <option value="1910">1910</option>
+                  <option value="1909">1909</option>
+                  <option value="1908">1908</option>
+                  <option value="1907">1907</option>
+                  <option value="1906">1906</option>
+                  <option value="1905">1905</option>
+                  <option value="1904">1904</option>
+                  <option value="1903">1903</option>
+                  <option value="1901">1901</option>
+                  <option value="1900">1900</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg pull-right">Наступний крок &rarr;</button>
+        </form>
+      </div>
+
+      <div class="step step-2" style="display: block;">
+        <h2>Крок 2 з 3: Оберіть дату та час</h2>
+
+        <div class="media">
+          <div class="media-left">
+            <img alt="64x64" class="media-object" data-src="holder.js/64x64" style="width: 64px; height: 64px;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWIwNjdmOTkwZCB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1YjA2N2Y5OTBkIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy40Njg3NSIgeT0iMzYuNSI+NjR4NjQ8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" data-holder-rendered="true">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">Иван Иванов</h4>
+            <span class="text-muted">Терапевт</span>
+          </div>
+        </div>
+
+        <form action="/" method="post" id="step-2-form">
+
+          <div class="calendar"></div>
+
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Время</th>
+                <th>Доступность</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>09:00</td>
+                <td>
+                  <button>Выбрать</button>
+                </td>
+              </tr>
+              <tr class="active">
+                <td>09:10</td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td>09:20</td>
+                <td>
+                  <button>Выбрать</button>
+                </td>
+              </tr>
+              <tr>
+                <td>09:30</td>
+                <td>
+                  <button>Выбрать</button>
+                </td>
+              </tr>
+              <tr class="active">
+                <td>09:40</td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td>09:50</td>
+                <td>
+                  <button>Выбрать</button>
+                </td>
+              </tr>
+              <tr>
+                <td>10:00</td>
+                <td>
+                  <button>Выбрать</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button class="btn btn-link btn-lg prev-step">&larr; Попередній крок</button>
+          <button type="submit" class="btn btn-success btn-lg pull-right">Отримати талон &rarr;</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/underscore-min.js"></script>
+<script src="./js/moment.min.js"></script>
+<script src="./js/moment-locale-ru.js"></script>
+<script src="./js/chosen.jquery.min.js"></script>
+<script src="./js/jquery.maskedinput.min.js"></script>
+<script src="./js/clndr.min.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
