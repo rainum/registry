@@ -13,7 +13,7 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'csv'))
 
 for filename in os.listdir(BASE_DIR):
     full_filename = os.path.join(BASE_DIR, filename)
-    with open(full_filename) as f:
+    with open(full_filename, encoding='utf-8') as f:
         reader = csv.reader(f, delimiter=';', quotechar='\'')
 
         row = next(reader)
