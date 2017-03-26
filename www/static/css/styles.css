@@ -5,3 +5,19 @@
 h2 {
   margin-bottom: 40px;
 }
+
+.step {
+  position: relative;
+  padding: 10px;
+}
+
+.loading {
+  display: none;
+  background: rgba(255,255,255, 0.9) url('/static/img/loading.gif') 50% 50% no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}

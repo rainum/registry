@@ -24,23 +24,24 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="step step-1">
+                <div class="loading"></div>
                 <h2>Крок 1 з 3: Особисті дані</h2>
-                <form action="/" method="post" id="step-1-form">
+                <form action="/" method="post">
                     <div class="form-group">
                         <label for="last-name">Прізвіще</label>
-                        <input type="text" class="form-control" id="last-name" required>
+                        <input type="text" class="form-control" name="last-name" id="last-name" >
                     </div>
                     <div class="form-group">
                         <label for="first-name">Им'я</label>
-                        <input type="text" class="form-control" id="first-name" required>
+                        <input type="text" class="form-control" name="first-name" id="first-name">
                     </div>
                     <div class="form-group">
                         <label for="patronym">По-батькові</label>
-                        <input type="text" class="form-control" id="patronym" required>
+                        <input type="text" class="form-control" name="patronym" id="patronym">
                     </div>
                     <div class="form-group">
                         <label>Вулиця</label>
-                        <select class="form-control" name="street" id="street" required>
+                        <select class="form-control" name="street" id="street" >
                             <option value=""></option>
                             <option value="8-го Березня пров.">8-го Березня пров.</option>
                             <option value="Автомобільна">Автомобільна</option>
@@ -113,7 +114,7 @@
                     </div>
                     <div class="form-group">
                         <label for="building">Номер будинку</label>
-                        <input type="text" class="form-control" id="building" required>
+                        <input type="text" class="form-control" name="building" id="building" >
                     </div>
                     <div class="form-group">
                         <label for="phone">Телефон</label>
@@ -123,7 +124,7 @@
                         <label>Дата народження</label>
                         <div class="row">
                             <div class="col-xs-4">
-                                <select class="form-control" name="dob-day" id="dob-day" required>
+                                <select class="form-control" name="dob-day" id="dob-day" >
                                     <option value="">День</option>
                                     <option value="01">01</option>
                                     <option value="02">02</option>
@@ -159,7 +160,7 @@
                                 </select>
                             </div>
                             <div class="col-xs-4">
-                                <select class="form-control" name="dob-month" id="dob-month" required>
+                                <select class="form-control" name="dob-month" id="dob-month" >
                                     <option value="">Місяць</option>
                                     <option value="01">Січень</option>
                                     <option value="02">Лютий</option>
@@ -176,7 +177,7 @@
                                 </select>
                             </div>
                             <div class="col-xs-4">
-                                <select class="form-control" name="dob-year" id="dob-year" required>
+                                <select class="form-control" name="dob-year" id="dob-year" >
                                     <option value="">Рік</option>
                                     <option value="2012">2012</option>
                                     <option value="2011">2011</option>
@@ -295,16 +296,20 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-lg pull-right">Наступний крок &rarr;</button>
+                    <div class="form-group clearfix">
+                        <button type="submit" class="btn btn-primary btn-lg pull-right">Наступний крок &rarr;</button>
+                    </div>
                 </form>
             </div>
 
-            <div class="step step-2" style="display: block;">
+            <br>
+
+            <div class="step step-2" style="display: none;">
                 <h2>Крок 2 з 3: Оберіть дату та час</h2>
 
                 <div class="media">
                     <div class="media-left">
-                        <img alt="64x64" class="media-object" data-src="holder.js/64x64" style="width: 64px; height: 64px;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWIwNjdmOTkwZCB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1YjA2N2Y5OTBkIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy40Njg3NSIgeT0iMzYuNSI+NjR4NjQ8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" data-holder-rendered="true">
+                        <img alt="64x64" class="media-object" data-src="holder.js/64x64" style="width: 128px; height: 128px;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWIwNjdmOTkwZCB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1YjA2N2Y5OTBkIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy40Njg3NSIgeT0iMzYuNSI+NjR4NjQ8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" data-holder-rendered="true">
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">Иван Иванов</h4>

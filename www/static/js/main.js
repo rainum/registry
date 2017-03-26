@@ -1,8 +1,34 @@
 (function($) {
-  var data = {
-    step1: {},
-    step2: {}
-  };
+  function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = jQuery.trim(cookies[i]);
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  var csrftoken = getCookie('csrftoken');
+
+  function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
+
+  $.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+      if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+    }
+  });
 
   $('#street').chosen({
     disable_search_threshold: 10,
@@ -15,7 +41,7 @@
 
   $('.calendar').clndr({
     events: [
-      {
+      /*{
         title: 'Multi-Day Event',
         endDate: thisMonth + '-14',
         startDate: thisMonth + '-10'
@@ -26,41 +52,11 @@
       }, {
         date: thisMonth + '-27',
         title: 'Single Day Event'
-      }
+      }*/
     ],
     clickEvents: {
       click: function(target) {
-        console.log('Cal-1 clicked: ', target);
-      },
-      today: function() {
-        console.log('Cal-1 today');
-      },
-      nextMonth: function() {
-        console.log('Cal-1 next month');
-      },
-      previousMonth: function() {
-        console.log('Cal-1 previous month');
-      },
-      onMonthChange: function() {
-        console.log('Cal-1 month changed');
-      },
-      nextYear: function() {
-        console.log('Cal-1 next year');
-      },
-      previousYear: function() {
-        console.log('Cal-1 previous year');
-      },
-      onYearChange: function() {
-        console.log('Cal-1 year changed');
-      },
-      nextInterval: function() {
-        console.log('Cal-1 next interval');
-      },
-      previousInterval: function() {
-        console.log('Cal-1 previous interval');
-      },
-      onIntervalChange: function() {
-        console.log('Cal-1 interval changed');
+        console.log('Cal-1 clicked: ', target.date.format('YYYY-MM-DD'));
       }
     },
     multiDayEvents: {
@@ -85,7 +81,7 @@
     showStep(1);
   });
 
-  $('#step-1-form').on('submit', function(e) {
+  $('.step.step-1 form').on('submit', function(e) {
     e.preventDefault();
 
     var dataArr = $(this).serializeArray();
@@ -94,8 +90,20 @@
       return acc;
     }, {});
 
-    data.step1 = dataObj;
+    $('.loading').fadeIn(300);
 
-    showStep(2);
+    $.ajax({
+      method: 'POST',
+      url: '/',
+      dataType: 'json',
+      data: dataObj
+    }).done(function() {
+      console.log("success");
+    }).always(function() {
+      $('.loading').fadeOut(300);
+      showStep(2);
+    });
+
+    return false;
   });
 }($));
