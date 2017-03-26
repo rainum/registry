@@ -238,78 +238,44 @@
                 </form>
             </div>
 
-            <br>
-
             <div class="step step-2" style="display: none;">
                 <h2>Крок 2 з 3: Оберіть дату та час</h2>
 
-                <div class="media">
-                    <div class="media-left">
-                        <img alt="64x64" class="media-object" data-src="holder.js/64x64" style="width: 128px; height: 128px;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWIwNjdmOTkwZCB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1YjA2N2Y5OTBkIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy40Njg3NSIgeT0iMzYuNSI+NjR4NjQ8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" data-holder-rendered="true">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Ваш сімейний лікар</h3>
                     </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Иван Иванов</h4>
-                        <span class="text-muted">Терапевт</span>
+                    <div class="panel-body">
+                        <div class="media">
+                            <div class="media-left">
+                                <img alt="doctor" class="media-object" src="/static/img/doctor.jpg" width="128">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading doctor-name">Иван Иванов</h4>
+                                <span class="text-muted doctor-position">Терапевт</span>
+                                <br>
+                                <br>
+                                <p><span class="text-muted">тел.:</span> (06452) 3-43-84</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <form action="/" method="post" id="step-2-form">
-
+                    <h3>Дата:</h3>
                     <div class="calendar"></div>
 
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th>Время</th>
-                            <th>Доступность</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>09:00</td>
-                            <td>
-                                <button>Выбрать</button>
-                            </td>
-                        </tr>
-                        <tr class="active">
-                            <td>09:10</td>
-                            <td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>09:20</td>
-                            <td>
-                                <button>Выбрать</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>09:30</td>
-                            <td>
-                                <button>Выбрать</button>
-                            </td>
-                        </tr>
-                        <tr class="active">
-                            <td>09:40</td>
-                            <td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>09:50</td>
-                            <td>
-                                <button>Выбрать</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>10:00</td>
-                            <td>
-                                <button>Выбрать</button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <h3>Час:</h3>
+                    <div class="time-container">
+                        <div class="loading"></div>
+                        <table class="table table-bordered">
+                            <tbody></tbody>
+                        </table>
+                    </div>
 
                     <button class="btn btn-link btn-lg prev-step">&larr; Попередній крок</button>
-                    <button type="submit" class="btn btn-success btn-lg pull-right">Отримати талон &rarr;</button>
+                    <button type="submit" class="btn btn-success btn-lg pull-right">Отримати талон</button>
                 </form>
             </div>
         </div>
@@ -320,7 +286,6 @@
 <script src="/static/js/bootstrap.min.js"></script>
 <script src="/static/js/underscore-min.js"></script>
 <script src="/static/js/moment.min.js"></script>
-<script src="/static/js/moment-locale-ru.js"></script>
 <script src="/static/js/chosen.jquery.min.js"></script>
 <script src="/static/js/jquery.maskedinput.min.js"></script>
 <script src="/static/js/clndr.min.js"></script>

@@ -1,5 +1,5 @@
 .main-container {
-  padding: 100px 0;
+  padding: 10px 0 100px 0;
 }
 
 h2 {
@@ -20,4 +20,29 @@ h2 {
   right: 0;
   bottom: 0;
   z-index: 999;
+}
+
+#step-2-form {
+  margin-top: 50px;
+}
+
+.table td:first-child {
+  width: 15%;
+  font-size: 22px;
+  text-align: center;
+}
+
+.table tr.active {
+  color: #b9b9b9;
+}
+
+.table td:last-child {
+  text-align: center;
+}
+
+.time-container {
+  position: relative;
+  height: 243px;
+  overflow-y: auto;
+  margin-bottom: 20px;
 }
