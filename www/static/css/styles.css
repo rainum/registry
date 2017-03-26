@@ -41,8 +41,11 @@ h2 {
 }
 
 .time-container {
+  margin-bottom: 20px;
   position: relative;
+}
+
+.scroll-container {
   height: 243px;
   overflow-y: auto;
-  margin-bottom: 20px;
 }
