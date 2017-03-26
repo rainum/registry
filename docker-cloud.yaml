@@ -13,4 +13,4 @@ edoctor-web:
     - LETSENCRYPT_HOST=edoctor.ferumflex.com
   volumes:
     - /data/edoctor/edoctor_media:/opt/django/persistent/media
-    - /data/edoctor/edoctor_data:/opt/django/app/data
+    - /data/edoctor/edoctor_data:/opt/django/data

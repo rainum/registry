@@ -8,6 +8,8 @@ RUN pip3.6 install -r /opt/django/requirements.txt
 ADD www /opt/django/app
 RUN python3.6 /opt/django/app/manage.py collectstatic --noinput
 
+ADD data /opt/django/data
+
 VOLUME ["/opt/django/persistent/media"]
 EXPOSE 80
 
