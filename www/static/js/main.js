@@ -65,6 +65,7 @@
         var date = target.date.format('YYYY-MM-DD');
 
         if (moment(date).isSameOrAfter(thisDay)) {
+          talonData.date = date;
           getFreeSlots(date, talonData.doctorId);
         }
       }
