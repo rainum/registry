@@ -1,0 +1,16 @@
+edoctor-web:
+  restart: always
+  # autoredeploy: true
+  image: registry.gitlab.com/ferumflex/edoctor:latest
+  mem_limit: 512m
+  ports:
+    - 10222:80
+  environment:
+    - SERVER=prod
+    - VIRTUAL_HOST=edoctor.ferumflex.com
+    - VIRTUAL_PORT=10222
+    - LETSENCRYPT_EMAIL=ferumflex@gmail.com
+    - LETSENCRYPT_HOST=edoctor.ferumflex.com
+  volumes:
+    - /data/edoctor/edoctor_media:/opt/django/persistent/media
+    - /data/edoctor/edoctor_data:/opt/django/app/data

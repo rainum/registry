@@ -1,0 +1,7 @@
+persistent/*
+bin/*
+env/*
+__pycache__/*
+.git/*
+node_modules/*
+data/

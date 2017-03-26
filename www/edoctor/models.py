@@ -15,44 +15,52 @@ class Doctor(BaseModel):
     last_name = models.CharField(max_length=100)
     second_name = models.CharField(max_length=100)
 
-    monday_start = models.DateTimeField()
-    monday_end = models.DateTimeField()
-    monday_cabinet = models.CharField(max_length=20)
+    monday_start = models.DateTimeField(null=True, blank=True)
+    monday_end = models.DateTimeField(null=True, blank=True)
+    monday_cabinet = models.CharField(max_length=20, null=True, blank=True)
 
-    tuesday_start = models.DateTimeField()
-    tuesday_end = models.DateTimeField()
-    tuesday_cabinet = models.CharField(max_length=20)
+    tuesday_start = models.DateTimeField(null=True, blank=True)
+    tuesday_end = models.DateTimeField(null=True, blank=True)
+    tuesday_cabinet = models.CharField(max_length=20, null=True, blank=True)
 
-    wednesday_start = models.DateTimeField()
-    wednesday_end = models.DateTimeField()
-    wednesday_cabinet = models.CharField(max_length=20)
+    wednesday_start = models.DateTimeField(null=True, blank=True)
+    wednesday_end = models.DateTimeField(null=True, blank=True)
+    wednesday_cabinet = models.CharField(max_length=20, null=True, blank=True)
 
-    thursday_start = models.DateTimeField()
-    thursday_end = models.DateTimeField()
-    thursday_cabinet = models.CharField(max_length=20)
+    thursday_start = models.DateTimeField(null=True, blank=True)
+    thursday_end = models.DateTimeField(null=True, blank=True)
+    thursday_cabinet = models.CharField(max_length=20, null=True, blank=True)
 
-    friday_start = models.DateTimeField()
-    friday_end = models.DateTimeField()
-    friday_cabinet = models.CharField(max_length=20)
+    friday_start = models.DateTimeField(null=True, blank=True)
+    friday_end = models.DateTimeField(null=True, blank=True)
+    friday_cabinet = models.CharField(max_length=20, null=True, blank=True)
 
-    saturday_start = models.DateTimeField()
-    saturday_end = models.DateTimeField()
-    saturday_cabinet = models.CharField(max_length=20)
+    saturday_start = models.DateTimeField(null=True, blank=True)
+    saturday_end = models.DateTimeField(null=True, blank=True)
+    saturday_cabinet = models.CharField(max_length=20, null=True, blank=True)
 
-    sunday_start = models.DateTimeField()
-    sunday_end = models.DateTimeField()
-    sunday_cabinet = models.CharField(max_length=20)
+    sunday_start = models.DateTimeField(null=True, blank=True)
+    sunday_end = models.DateTimeField(null=True, blank=True)
+    sunday_cabinet = models.CharField(max_length=20, null=True, blank=True)
 
-    duration = models.DurationField()
+    duration = models.DurationField(null=True, blank=True)
 
     specialization = models.CharField(max_length=100)
 
 
-class Patient(BaseModel):
+class Address(BaseModel):
+    street = models.CharField(max_length=100)
+    house = models.CharField(max_length=20)
+    doctor = models.ForeignKey(Doctor)
+
+
+class Talon(BaseModel):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     second_name = models.CharField(max_length=100)
 
     doctor = models.ForeignKey(Doctor)
+    address = models.ForeignKey(Address)
 
     date_of_receipt = models.DateTimeField()
+

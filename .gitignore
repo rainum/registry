@@ -4,4 +4,4 @@ env/
 __pycache__/
 celerybeat-schedule
 node_modules
-www/db.sqlite3
+db\.sqlite3
