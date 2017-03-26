@@ -4,8 +4,8 @@ set -e
 
 git checkout master
 
-# docker build -t ferumflex/steampunk . && docker push ferumflex/steampunk
-docker build -t registry.gitlab.com/ferumflex/steampunk . && docker push registry.gitlab.com/ferumflex/steampunk
+# docker build -t ferumflex/edoctor . && docker push ferumflex/edoctor
+docker build -t registry.gitlab.com/ferumflex/edoctor . && docker push registry.gitlab.com/ferumflex/edoctor
 
 now=$(date +"%Y/%m/%d")
 base="Prod/$now"
