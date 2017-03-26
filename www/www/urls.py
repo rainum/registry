@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from edoctor.views import home, select_address, select_date
+from edoctor.views import home, select_address, select_date, create_talon, TalonPDFView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home),
     url(r'^select-address$', select_address),
     url(r'^select-date', select_date),
+    url(r'^create-talon', create_talon),
+    url(r'^view-pdf/(?P<pk>[0-9]+)', TalonPDFView.as_view(), name='view-pdf'),
 ]

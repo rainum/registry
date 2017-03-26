@@ -1,13 +1,18 @@
 # common
+import os
 import datetime
 
 # django
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
-from django.utils.dateparse import parse_date
+from django.utils.dateparse import parse_date, parse_time
+from django.core.urlresolvers import reverse
 
 # my
 from edoctor.models import Address, Doctor, Talon
+
+# other
+from easy_pdf.views import PDFTemplateView
 
 
 DATES = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
@@ -103,3 +108,67 @@ def select_date(request):
         'slots': slots,
     }
     return JsonResponse(data)
+
+
+def create_talon(request):
+    data = request.POST
+
+    street = data.get('street')
+    house = data.get('building')
+    address = get_object_or_404(Address, street=street, house=house)
+
+    doctor_id = data.get('doctorId')
+    doctor = get_object_or_404(Doctor, id=doctor_id)
+
+    birth_day = data.get('dob-day')
+    birth_month = data.get('dob-month')
+    birth_year = data.get('dob-year')
+
+    time_talon = parse_time(data.get('time'))
+    date_talon = parse_date(data.get('date'))
+
+    date_of_receipt = datetime.datetime.combine(date_talon, time_talon)
+
+    try:
+        Talon.objects.get(doctor=doctor, date_of_receipt=date_of_receipt)
+
+        data = {
+            'error': 'Talon is already created'
+        }
+        return JsonResponse(data)
+    except Talon.DoesNotExist:
+        pass
+
+    talon = Talon()
+    talon.first_name = data.get('first-name')
+    talon.last_name = data.get('last-name')
+    talon.second_name = data.get('patronym')
+    talon.address = address
+    talon.doctor = doctor
+    talon.date_of_receipt = date_of_receipt
+
+    if birth_year and birth_month and birth_day:
+        talon.birthday = datetime.date(year=int(birth_year), month=int(birth_month), day=int(birth_day))
+    talon.phone = data.get('phone')
+    talon.save()
+
+    kwargs = {
+        'pk': talon.id,
+    }
+    data = {
+        'url': reverse('view-pdf', kwargs=kwargs),
+    }
+    return JsonResponse(data)
+
+
+class TalonPDFView(PDFTemplateView):
+    template_name = "pdf.html"
+
+    def get_context_data(self, **kwargs):
+        talon = get_object_or_404(Talon, id=kwargs.get('pk'))
+
+        path = os.path.join(os.path.dirname(__file__), '..', 'font.ttf')
+        return {
+            'url': path,
+            'talon': talon,
+        }

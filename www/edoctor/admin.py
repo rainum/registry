@@ -10,7 +10,8 @@ class DoctorAdmin(admin.ModelAdmin):
 
 
 class TalonAdmin(admin.ModelAdmin):
-    list_display = ('id', 'first_name', 'last_name', 'second_name', 'doctor', 'address', 'date_of_receipt')
+    list_display = ('id', 'phone', 'first_name', 'last_name', 'second_name', 'doctor', 'address', 'date_of_receipt',
+                    'birthday', 'cabinet')
 
 
 class AddressAdmin(admin.ModelAdmin):

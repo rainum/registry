@@ -171,7 +171,7 @@
       dataType: 'json',
       data: talonData
     }).done(function(data) {
-      console.log(arguments);
+      location.url = data['url'];
     });
   });
 }($));

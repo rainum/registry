@@ -1,0 +1,91 @@
+{% extends "easy_pdf/base.html" %}
+
+{% block extra_style %}
+    <style>
+        @font-face {
+            font-family: MyFont;
+            src: url("{{ url }}");
+        }
+        body {
+            font-family: MyFont;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+{% endblock %}
+
+{% block content %}
+    <div id="content">
+        <div style="border: solid 2px; margin:10px">
+            <div style="border-bottom: solid 2px">
+                <ul style="padding: 5px;">
+                    <li style="display:inline-block; vertical-align: middle; list-style: none; width: 40%">
+                        <div>Міністерство охорони здоров’я України</div>
+                        <div>Найменування закладу</div>
+                    </li>
+                    <li style="display:inline-block; vertical-align: middle; width: 20%">
+                        <div>
+                        </div>
+                    </li>
+                    <li style="display:inline-block; vertical-align: middle; width: 30%">
+                        <div>МЕДИЧНА ДОКУМЕНТАЦІЯ
+                            ФОРМА № 025 – 4/о
+                            Затверджена наказом МОЗ України
+                            29 травня 2013 року №435
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div style="border-bottom: solid 2px;width:100%; text-align:center">
+                <p style="text-transform:uppercase;"><strong>Талон</strong></p>
+                <p><strong>на прийом до лікаря</strong></p>
+            </div>
+            <div style="margin:10px">
+                <ol>
+                    <span style="margin-left:60%">Місце коду: {{ talon.id }}</span>
+                    <li style="margin-top: 10px">
+						<span>Прізвище, ім’я по батькові:</span>
+                        <div style="display:inline-block;border-bottom: solid 1px; width: 100%">{{ talon.name }}</div>
+                    </li>
+                    <li style="margin-top: 10px">
+                        <span>Адреса і № карти амбулаторного хворого:</span>
+                        <div style="display:inline-block;border-bottom: solid 1px; width: 100%">{{ talon.address.address }}</div>
+                    </li>
+                    {% if talon.cabinet %}
+                        <li style="margin-top: 10px">
+                            <span>Кабінет №</span>
+                            <div style="display:inline-block;border-bottom: solid 1px; width: 100%">
+                            </div>
+                        </li>
+                    {% endif %}
+                    <li style="margin-top: 10px">
+                        <span>З’явиться {{ talon.date_of_receipt|date:"m d" }}</span>
+                        <span>в {{ talon.date_of_receipt|date:"H" }} годин,</span>
+                        <span>{{ talon.date_of_receipt|date:"i" }} хвилин</span>
+                    </li>
+                    <li style="margin-top: 10px">
+                        <span>До лікаря</span>
+                        <span style="display:inline-block;border-bottom: solid 1px; width: 100%">{{ talon.doctor.name }}</span>
+                    </li>
+                    <li style="margin-top: 10px">
+                        <span>Діти (0-14 років включно,) підлітки (15-17 років включно), дорослі (від 18 років і старші) (необхідне підкреслити).</span>
+                        <div style="display:inline-block;border-bottom: solid 1px; width: 100%">{{ talon.doctor }}
+                        </div>
+                    </li>
+                    <li style="margin-top: 10px">
+                        <span>Звернення з приводу: захворювання, профогляду, щеплення, за довідкою, з інших причин (необхідне підкреслити, інше дописати). </span>
+                        <div style="display:inline-block;border-bottom: solid 1px; width: 100%">
+                        </div>
+                        <div style="display:inline-block;border-bottom: solid 1px; width: 100%">
+                        </div>
+                    </li>
+                </ol>
+                <div style="margin: 10px auto">
+                    <span style="margin-left: 24px"><strong>Підпис лікаря</strong></span>
+                    <span style="display:inline-block;border-bottom: solid 1px; width:100px"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
