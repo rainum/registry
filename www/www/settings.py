@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+SERVER = os.environ.get('SERVER', 'local')
+assert SERVER in ('prod', 'local', 'testing')
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -23,9 +26,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '263okxo2hzd+dvnp=ii&6sz&mx4$&0q)(zsauqk9grskql=#8f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = SERVER != 'prod'
 
-ALLOWED_HOSTS = []
+if SERVER == 'prod':
+    ALLOWED_HOSTS = ['edoctor.ferumflex.com']
+else:
+    ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -117,6 +123,18 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, '..', 'volatile', 'static')
+
+# Additional locations of static files
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(BASE_DIR, 'static'),
+)
+
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'persistent', 'media')
+MEDIA_URL = '/media/'
