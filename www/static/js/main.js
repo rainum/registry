@@ -1,6 +1,5 @@
 (function($) {
   var talonData = {};
-  var pickedTime;
 
   function getCookie(name) {
     var cookieValue = null;
@@ -46,20 +45,6 @@
 
   $('.calendar').clndr({
     trackSelectedDate: true,
-    events: [
-      /*{
-       title: 'Multi-Day Event',
-       endDate: thisMonth + '-14',
-       startDate: thisMonth + '-10'
-       }, {
-       endDate: thisMonth + '-23',
-       startDate: thisMonth + '-21',
-       title: 'Another Multi-Day Event'
-       }, {
-       date: thisMonth + '-27',
-       title: 'Single Day Event'
-       }*/
-    ],
     clickEvents: {
       click: function(target) {
         var date = target.date.format('YYYY-MM-DD');
