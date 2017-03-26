@@ -33,7 +33,7 @@
   });
 
   $('#street').chosen({
-    disable_search_threshold: 10,
+    disable_search_threshold: 1,
     placeholder_text_single: 'Оберіть вулицю'
   });
 
