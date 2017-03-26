@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -139,8 +139,84 @@ STATICFILES_DIRS = (
 MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'persistent', 'media')
 MEDIA_URL = '/media/'
 
+########################################################################################################################
+# Admin logs
+########################################################################################################################
+INSTALLED_APPS += ('admin_logs', )
+MIDDLEWARE = ['admin_logs.middleware.LogRequestMiddleware', ] + MIDDLEWARE
+
+ADMIN_LOGS_BACKEND = 'admin_logs.backends.database.DatabaseBackend'
+
 
 ########################################################################################################################
-# easy_pdf
+# LOGGING
 ########################################################################################################################
-INSTALLED_APPS += ['easy_pdf', ]
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'root': {
+        'level': 'DEBUG',
+        'handlers': ['sentry', 'admin_logs'],
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s '
+                      '%(process)d %(thread)d %(message)s'
+        },
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'sentry': {
+            'level': 'ERROR', # To capture more than ERROR, change to WARNING, INFO, etc.
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+
+            #'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'admin_logs': {
+            'level': 'DEBUG',
+            'class': 'admin_logs.log.AdminLogHandler',
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'django.db.backends': {
+            'level': 'ERROR',
+            'handlers': ['sentry', 'console'],
+            'propagate': False,
+        },
+        'raven': {
+            'level': 'DEBUG',
+            'handlers': ['sentry', 'console'],
+            'propagate': False,
+        },
+        'sentry.errors': {
+            'level': 'DEBUG',
+            'handlers': ['sentry', 'console'],
+            'propagate': False,
+        },
+        'sentry': {
+            'level': 'DEBUG',
+            'handlers': ['sentry', 'console'],
+            'propagate': False,
+        },
+    },
+}
