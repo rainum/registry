@@ -156,7 +156,7 @@
       dataType: 'json',
       data: talonData
     }).done(function(data) {
-      location.url = data['url'];
+      window.location.href = data['url'];
     });
   });
 }($));
