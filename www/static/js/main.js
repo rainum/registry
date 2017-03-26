@@ -1,5 +1,6 @@
 (function($) {
-  var doctorId;
+  var talonData = {};
+  var pickedTime;
 
   function getCookie(name) {
     var cookieValue = null;
@@ -39,12 +40,12 @@
 
   $("#phone").mask("+380 (099) 999-99-99");
 
-  var thisMonth = moment().format('YYYY-MM');
-  var thisDay = moment().format('YYYY-MM-DD');
+  var thisDay = moment('2017-03-27').format('YYYY-MM-DD');
 
   moment.locale('ru');
 
   $('.calendar').clndr({
+    trackSelectedDate: true,
     events: [
       /*{
        title: 'Multi-Day Event',
@@ -64,9 +65,7 @@
         var date = target.date.format('YYYY-MM-DD');
 
         if (moment(date).isSameOrAfter(thisDay)) {
-          console.log(date);
-
-          getFreeSlots(date, doctorId);
+          getFreeSlots(date, talonData.doctorId);
         }
       }
     },
@@ -84,15 +83,15 @@
     $('.time-container .loading').fadeIn(300);
 
     $.ajax({
-      method: 'POST',
-      url: '/static/free-slots.json',
+      method: 'get',
+      url: '/select-date',
       dataType: 'json',
       data: {
         doctorId: id,
         date: date
       }
     }).done(function(data) {
-      var slotsHtml = data.map(function(slot) {
+      var slotsHtml = data.slots.map(function(slot) {
         if (slot.available) {
           return '<tr><td>' + slot.time + '</td><td><button class="btn btn-small btn-primary btn-pick-time">Обрати</button></td></tr>';
         }
@@ -101,6 +100,7 @@
       });
 
       $('.time-container .table tbody').html(slotsHtml);
+      $('#step-2-form .btn-success').attr('disabled', true);
 
       $('.time-container .loading').fadeOut(300);
     });
@@ -115,7 +115,9 @@
 
     row.addClass('success');
 
-    console.log(time);
+    talonData.time = time;
+
+    $('#step-2-form .btn-success').removeAttr('disabled');
   });
 
   $('.prev-step').on('click', function(e) {
@@ -132,6 +134,8 @@
       return acc;
     }, {});
 
+    _.extend(talonData, dataObj);
+
     $(this).find('.loading').fadeIn(300);
 
     $.ajax({
@@ -142,7 +146,7 @@
     }).done(function(data) {
       var doctor = data.doctor;
 
-      doctorId = doctor.id;
+      talonData.doctorId = doctor.id;
 
       $('.doctor-name').text([
         doctor.last_name,
@@ -150,12 +154,23 @@
         doctor.second_name
       ].join(' '));
 
-      getFreeSlots(thisDay, doctorId);
+      getFreeSlots(thisDay, doctor.id);
       showStep(2);
     }).always(function() {
       $('.loading').fadeOut(300);
     });
+  });
 
-    return false;
+  $('.step.step-2 form').on('submit', function(e) {
+    e.preventDefault();
+
+    $.ajax({
+      method: 'POST',
+      url: '/create-talon',
+      dataType: 'json',
+      data: talonData
+    }).done(function(data) {
+      console.log(arguments);
+    });
   });
 }($));
