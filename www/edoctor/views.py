@@ -1,3 +1,6 @@
+# common
+import datetime
+
 # django
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -58,7 +61,7 @@ def select_date(request):
         doctor = Doctor.objects.get(id=doctor_id)
     except Doctor.DoesNotExist:
         data = {
-            'error': 'Доктор не найден',
+            'slots': [],
         }
         return JsonResponse(data)
 
@@ -72,22 +75,23 @@ def select_date(request):
 
     if not start_date or not end_date or not doctor.duration:
         data = {
-            'error': 'Нет данных',
+            'slots': [],
         }
         return JsonResponse(data)
 
     current = start_date
     slots = []
     while current < end_date:
-
+        tmp_date = datetime.datetime(year=date.year, month=date.month, day=date.day, hour=current.hour,
+                                     minute=current.minute)
         try:
-            Talon.objects.get(doctor=doctor, date_of_receipt=current)
+            Talon.objects.get(doctor=doctor, date_of_receipt=tmp_date)
             available = False
         except Talon.DoesNotExist:
             available = True
 
         slot = {
-            'time': current.strftime('%I:%M'),
+            'time': current.strftime('%H:%M'),
             'available': available,
         }
         slots.append(slot)
