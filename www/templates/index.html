@@ -43,73 +43,9 @@
                         <label>Вулиця</label>
                         <select class="form-control" name="street" id="street" >
                             <option value=""></option>
-                            <option value="8-го Березня пров.">8-го Березня пров.</option>
-                            <option value="Автомобільна">Автомобільна</option>
-                            <option value="Агафонова">Агафонова</option>
-                            <option value="Айдарська">Айдарська</option>
-                            <option value="Артема">Артема</option>
-                            <option value="Борова">Борова</option>
-                            <option value="Вілісова">Вілісова</option>
-                            <option value="Гагаріна">Гагаріна</option>
-                            <option value="Гвардійський проспект">Гвардійський проспект</option>
-                            <option value="Гоголя">Гоголя</option>
-                            <option value="Гоголя пров.">Гоголя пров.</option>
-                            <option value="Горького">Горького</option>
-                            <option value="Дачна">Дачна</option>
-                            <option value="Донецька">Донецька</option>
-                            <option value="Дружби Народів бульвар">Дружби Народів бульвар</option>
-                            <option value="Енергетиків">Енергетиків</option>
-                            <option value="Єгорова">Єгорова</option>
-                            <option value="Зелена">Зелена</option>
-                            <option value="Квіткова">Квіткова</option>
-                            <option value="Київська">Київська</option>
-                            <option value="Кірова">Кірова</option>
-                            <option value="Космонавтів проспект">Космонавтів проспект</option>
-                            <option value="Курчатова">Курчатова</option>
-                            <option value="Лермонтова">Лермонтова</option>
-                            <option value="Лисичанська">Лисичанська</option>
-                            <option value="Лісна">Лісна</option>
-                            <option value="Лісний пров.">Лісний пров.</option>
-                            <option value="Ліщини Богдана">Ліщини Богдана</option>
-                            <option value="Ломоносова">Ломоносова</option>
-                            <option value="Ломоносова пров.">Ломоносова пров.</option>
-                            <option value="Луначарського">Луначарського</option>
-                            <option value="Маяковського">Маяковського</option>
-                            <option value="Менделєєва">Менделєєва</option>
-                            <option value="Механізаторів">Механізаторів</option>
-                            <option value="Мирошниченка">Мирошниченка</option>
-                            <option value="Молодіжна">Молодіжна</option>
-                            <option value="Московська">Московська</option>
-                            <option value="Науки">Науки</option>
-                            <option value="Новікова">Новікова</option>
-                            <option value="Партизанська">Партизанська</option>
-                            <option value="Перемоги майдан">Перемоги майдан</option>
-                            <option value="Першотравнева">Першотравнева</option>
-                            <option value="Пивоварова">Пивоварова</option>
-                            <option value="Північна">Північна</option>
-                            <option value="Підлісна">Підлісна</option>
-                            <option value="Підлісний пров.">Підлісний пров.</option>
-                            <option value="Піонерська">Піонерська</option>
-                            <option value="Площа миру">Площа миру</option>
-                            <option value="Промислова">Промислова</option>
-                            <option value="Річна">Річна</option>
-                            <option value="Світлий пров.">Світлий пров.</option>
-                            <option value="Силікатна">Силікатна</option>
-                            <option value="Сметаніна">Сметаніна</option>
-                            <option value="Соборний майдан">Соборний майдан</option>
-                            <option value="Соснова">Соснова</option>
-                            <option value="Сосюри">Сосюри</option>
-                            <option value="Танкистів">Танкистів</option>
-                            <option value="Тімірязєва">Тімірязєва</option>
-                            <option value="Титова">Титова</option>
-                            <option value="Фабричний пров.">Фабричний пров.</option>
-                            <option value="Федоренка">Федоренка</option>
-                            <option value="Хіміків проспект">Хіміків проспект</option>
-                            <option value="Центральний проспект">Центральний проспект</option>
-                            <option value="Чайковського">Чайковського</option>
-                            <option value="Шевченка">Шевченка</option>
-                            <option value="Шосе Будівельників">Шосе Будівельників</option>
-                            <option value="Юності">Юності</option>
+                            {% for address in addresses %}
+                                <option value="{{ address }}">{{ address }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                     <div class="form-group">

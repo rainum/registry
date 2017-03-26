@@ -94,7 +94,7 @@
 
     $.ajax({
       method: 'POST',
-      url: '/',
+      url: '/select-address',
       dataType: 'json',
       data: dataObj
     }).done(function() {
