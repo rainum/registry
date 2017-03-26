@@ -5,9 +5,6 @@ MAINTAINER Anton Pomieschenko<ferumflex@gmail.com>
 ADD www/requirements.txt /opt/django
 RUN pip3.6 install -r /opt/django/requirements.txt
 
-ADD www/requirements_test.txt /opt/django
-RUN pip3.6 install -r /opt/django/requirements_test.txt
-
 ADD www /opt/django/app
 RUN python3.6 /opt/django/app/manage.py collectstatic --noinput
 
