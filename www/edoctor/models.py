@@ -47,6 +47,16 @@ class Doctor(BaseModel):
 
     specialization = models.CharField(max_length=100)
 
+    def __str__(self):
+        parts = []
+        if self.first_name:
+            parts.append(self.first_name)
+        if self.last_name:
+            parts.append(self.last_name)
+        if self.second_name:
+            parts.append(self.second_name)
+        return " ".join(parts)
+
 
 class Address(BaseModel):
     street = models.CharField(max_length=100)

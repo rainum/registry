@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from edoctor.views import home, select_address
+from edoctor.views import home, select_address, select_date
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home),
     url(r'^select-address$', select_address),
+    url(r'^select-date', select_date),
 ]
