@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from edoctor.views import home, select_address, select_date, create_talon, TalonPDFView
+from edoctor.views import home, select_address, select_date, create_talon, talon_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -23,5 +23,5 @@ urlpatterns = [
     url(r'^select-address$', select_address),
     url(r'^select-date', select_date),
     url(r'^create-talon', create_talon),
-    url(r'^view-pdf/(?P<pk>[0-9]+)', TalonPDFView.as_view(), name='view-pdf'),
+    url(r'^view-pdf/(?P<pk>[0-9]+)', talon_view, name='view-pdf'),
 ]

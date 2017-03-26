@@ -11,9 +11,6 @@ from django.core.urlresolvers import reverse
 # my
 from edoctor.models import Address, Doctor, Talon
 
-# other
-from easy_pdf.views import PDFTemplateView
-
 
 DATES = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 
@@ -161,14 +158,10 @@ def create_talon(request):
     return JsonResponse(data)
 
 
-class TalonPDFView(PDFTemplateView):
-    template_name = "pdf.html"
+def talon_view(request, pk):
+    talon = get_object_or_404(Talon, id=pk)
 
-    def get_context_data(self, **kwargs):
-        talon = get_object_or_404(Talon, id=kwargs.get('pk'))
-
-        path = os.path.join(os.path.dirname(__file__), '..', 'font.ttf')
-        return {
-            'url': path,
-            'talon': talon,
-        }
+    data = {
+        'talon': talon,
+    }
+    return render(request, 'pdf.html', data)
