@@ -1,0 +1,32 @@
+version: '3'
+services:
+  edoctor-web:
+    image: registry.gitlab.com/ferumflex/edoctor:latest
+    environment:
+      - SERVER=prod
+    volumes:
+      - /data/edoctor/edoctor_media:/opt/django/persistent/media
+      - /data/edoctor/edoctor_data:/opt/django/data
+
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          memory: 512M
+      labels:
+        - "traefik.enable=true"
+        - "traefik.backend=edoctor"
+        - "traefik.frontend.rule=Host:edoctor.ferumflex.com"
+        - "traefik.docker.network=traefik_frontend"
+        - "traefik.backend.loadbalancer.sticky=true"
+        - "traefik.port=80"
+
+    networks:
+      - traefik_frontend
+
+networks:
+  traefik_frontend:
+    external: true
